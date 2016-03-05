@@ -5,19 +5,30 @@
 
 class MoveSet {
 public:
-    MoveSet(Controller*);
-    ~MoveSet();
+	MoveSet(Controller*);
+	~MoveSet();
 
-    void UpB();
-    void SideB(char);
-    void DoubleJump();
-    void HoldStick(int);
-    void ReleaseStick();
-    void LedgeDash(int,int);
-    void HitTech();
-    
+	void UpA();
+	void UpB();
+	void UpTilt();
+	void SideB(char);
+	void DoubleJump();
+	void HoldStick(int);
+	void ReleaseStick();
+	void LedgeDash(int, int);
+	void HitTech();
+	void WaveDash(char);
+	void Shine();
+	void JCShine(bool);
+	void Multishine(int);
+	void WaveShine(char);
+	void ShortHop();
+	void SHNair();
+	void Grab();
+	void JCGrab();
+	void Throw(char);
 private:
-    Controller* m_controller;
+	Controller* m_controller;
 };
 
 #endif

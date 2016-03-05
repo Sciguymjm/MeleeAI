@@ -2,7 +2,7 @@
 #include "MemReader.hpp"
 
 #include <iostream>
-
+#include <typeinfo>
 std::string MemReader::memPath = "";
 
 std::thread MemReader::Init(std::string path) {
@@ -36,7 +36,6 @@ void MemReader::MonitorMemory() {
     while (1) {
         struct sockaddr remaddr;
         socklen_t addr_len;
-
         recvfrom(fd, buf, sizeof(buf), 0, &remaddr, &addr_len);
         snprintf(temp,32,"%s",buf);
         strncpy(add, temp, (strchr(temp, '\n') - temp));
@@ -46,6 +45,7 @@ void MemReader::MonitorMemory() {
         memset(val,0,sizeof(val));
         memset(temp,0,sizeof(temp));
         memset(buf,0,sizeof(buf));
+		// std::cout << m_game_state->GetString() << "\n\n";
     }
 }
 

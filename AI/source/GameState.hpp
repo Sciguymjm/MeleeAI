@@ -1,10 +1,11 @@
 #ifndef GAME_STATE_HPP
 #define GAME_STATE_HPP
-
+#include <string>
 class GameState {
 public:
     static GameState* Instance();
     static void WaitFrames(int);
+    std::string GetString();
 
     int p1_stocks = 0;
     int p2_stocks = 0;

@@ -31,12 +31,46 @@ bool AI::IsOffStage() {
     return abs(Xcoord()) > abs(StageLimit());
 }
 
+bool AI::IsNearLedge() {
+	return abs(abs(Xcoord()) - abs(StageLimit())) < 20;
+}
+
+// returns 1 for right ledge, -1 for left, 0 if not near either
+int AI::NearWhatLedge() {
+	if (!IsNearLedge())
+		return 0;
+	else
+		return Xcoord()/abs(Xcoord());
+}
+
+double AI::LedgeDistance() {
+	return abs(abs(Xcoord()) - abs(StageLimit()));
+}
+
 bool AI::InHitstun() {
     return (m_game_state->p2_in_air && (m_game_state->p2_hitstun_frames > 0));
 }
 
 bool AI::InHitlag() {
     return m_game_state->p2_hitlag_frames > 0;
+}
+
+bool AI::InAir() {
+	return m_game_state->p2_in_air == 1;
+}
+
+bool AI::IsStanding() {
+	return m_game_state->p2_action_state == 14;
+}
+
+double AI::PlayerDistance() {
+	return sqrt(pow(Xcoord() - m_game_state->p1_x, 2) + pow(Ycoord() - m_game_state->p1_y, 2));
+}
+
+
+bool AI::PlayerNear() {
+	std::cout << "Distance: " << sqrt((float) pow(Xcoord() - m_game_state->p1_x, 2) + (float) pow(Ycoord() - m_game_state->p1_y, 2)) << "\n";
+	return PlayerDistance() < 30;
 }
 
 double AI::StageLimit() {

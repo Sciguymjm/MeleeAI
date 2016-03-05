@@ -15,11 +15,18 @@ public:
     bool IsOffStage();
     bool InHitstun();
     bool InHitlag();
+    bool InAir();
+    bool IsStanding();
+    bool PlayerNear();
+    double PlayerDistance();
+    double LedgeDistance();
     void WaitForHitstun();
     bool TechSituation();
     double StageLimit();
     void WaitAndReact(int);
     bool OnLedge();
+    bool IsNearLedge();
+    int NearWhatLedge();
     int StageSide();
     double Xcoord();
     double Ycoord();
@@ -28,7 +35,7 @@ public:
     AI(Controller*);
     ~AI();
     
-protected:
+public:
     MoveSet* m_move_set;
     GameState* m_game_state;
     std::default_random_engine* m_generator;

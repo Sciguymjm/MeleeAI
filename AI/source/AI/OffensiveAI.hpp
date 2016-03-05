@@ -1,5 +1,5 @@
-#ifndef DEFENSIVE_AI_HPP
-#define DEFENSIVE_AI_HPP
+#ifndef OFFENSIVE_AI_HPP
+#define OFFENSIVE_AI_HPP
 
 #include "RecoveryBot/RecoveryBot.hpp"
 #include "RecoveryBot/RecoveryFox.hpp"
@@ -8,16 +8,16 @@
 #include "TechBot.hpp"
 #include "DIBot.hpp"
 
-class DefensiveAI : public AI {
+class OffensiveAI : public AI {
 public:
-    DefensiveAI(Controller*);
-    ~DefensiveAI();
+	OffensiveAI(Controller*);
+    ~OffensiveAI();
 
     void MakeMove();
     void WaitForTrigger();
     bool TriggerEvents();
     void SelectCharacter();
-    
+
 private:
     RecoveryBot* m_recovery_bot;
     LedgeBot* m_ledge_bot;

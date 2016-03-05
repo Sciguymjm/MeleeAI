@@ -1,9 +1,12 @@
 CXX = g++
 CFLAGS = -c -Wall -Wextra -pedantic -std=c++11
 
-OBJECTS = build/MeleeAI.o build/GameState.o build/PipeController.o build/MoveSet.o build/AI.o build/StageInfo.o build/DefensiveAI.o build/RecoveryBot.o build/RecoveryFox.o build/LedgeBot.o build/MemReader.o build/DIBot.o build/TechBot.o
+OBJECTS = build/MeleeAI.o build/GameState.o build/PipeController.o build/MoveSet.o build/AI.o build/StageInfo.o build/DefensiveAI.o build/RecoveryBot.o build/RecoveryFox.o build/LedgeBot.o build/MemReader.o build/DIBot.o build/TechBot.o build/OffensiveAI.o
 
 GS_TEST_OBJECTS = build/GameState_test.o build/MemReader.o build/GameState.o
+
+all: $(OBJECTS)
+	$(CXX) -L /lib32 -pthread $(OBJECTS) -lrt -o MeleeAI
 
 MeleeAI: $(OBJECTS)
 	$(CXX) -L /lib32 -pthread $(OBJECTS) -lrt -o MeleeAI
@@ -55,6 +58,9 @@ build/DIBot.o: source/AI/DIBot.cpp
 
 build/TechBot.o: source/AI/TechBot.cpp
 	$(CXX) $(CFLAGS) source/AI/TechBot.cpp -o build/TechBot.o
+
+build/OffensiveAI.o: source/AI/OffensiveAI.cpp
+	$(CXX) $(CFLAGS) source/AI/OffensiveAI.cpp -o build/OffensiveAI.o
 
 clean:
 	rm build/*.o

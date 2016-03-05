@@ -1,0 +1,1 @@
+make && ./MeleeAI ~/.dolphin-emu/
